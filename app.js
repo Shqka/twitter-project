@@ -5,6 +5,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 const index = require('./routes');
 
+require ('./database');
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
