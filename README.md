@@ -1,6 +1,6 @@
 # Présentation
 
-Projet Twitter permettant de mettre en pratique mes compétences sur Node.js / Express.js / Pug/ Socket.IO...
+Projet Twitter permettant de mettre en pratique mes connaissances sur Node.js / Express.js / Pug/ Socket.IO...
 
 ## Installation
 
