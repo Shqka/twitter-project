@@ -1,9 +1,9 @@
-const Tweet = require('../database/models/tweet.model.js');
+const { getTweets, createTweet } = require ('../queries/tweets.queries.js');
 
 
 exports.tweetList = async (req, res, next) => {
     try {
-        const tweets = await Tweet.find({}).exec();
+        const tweets = await getTweets;
         res.render('tweets/tweet-list.pug', { tweets });
 
     } catch (error) {
@@ -20,8 +20,8 @@ exports.tweetNew = (req, res, next) => {
 exports.tweetCreate = async (req, res, next) => {
     try {
         const body = req.body;
-        const newTweet = new Tweet(body);
-        await newTweet.save();
+        await createTweet(body);
+        res.redirect('/tweets');
 
     } catch (error) {
         // Affichage du message d'erreur
