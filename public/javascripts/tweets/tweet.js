@@ -3,7 +3,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
 function bindTweet() {
     const buttons = document.querySelectorAll('.btn-danger');
     const tweetContainer = document.querySelector('#tweet-list-container');

@@ -3,4 +3,5 @@ if tweets
         div(class="card tweet-element")
             div(class="card-body")
                 div(class="card-text")= tweet.content
+                a(href="/tweets/edit/" + tweet._id) modifier
                 button(class="btn btn-danger mt-2 float-right" tweetid=tweet._id) X
