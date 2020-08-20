@@ -1,10 +1,11 @@
-const { getTweets, createTweet } = require ('../queries/tweets.queries.js');
+const { getTweets, createTweet, deleteTweet } = require ('../queries/tweets.queries.js');
+const e = require('express');
 
 
 exports.tweetList = async (req, res, next) => {
     try {
-        const tweets = await getTweets;
-        res.render('tweets/tweet-list.pug', { tweets });
+        const tweets = await getTweets();
+        res.render('tweets/tweet.pug', { tweets });
 
     } catch (error) {
         next(error);
@@ -28,4 +29,18 @@ exports.tweetCreate = async (req, res, next) => {
         const errors = Object.keys(error.errors).map( key => error.errors[key].message );
         res.status(400).render('tweets/tweet-form', { errors });
     }
+}
+
+
+exports.tweetDelete = async (req, res, next) => {
+    try {
+        const tweetId = req.params.tweetId;
+        await deleteTweet(tweetId);
+        const tweets = await getTweets();
+        res.render('tweets/tweet-list', { tweets });
+
+    } catch (error) {
+        next(error);
+    }
+
 }
