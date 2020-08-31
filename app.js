@@ -13,6 +13,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 require('./config/session.config.js');
+/* ATTENTION: Toujours importer passport après la configuration des sessions
+   sinon passport ne pourra pas accéder à req.session. */
+require('./config/passport.config.js');
 
 app.use(morgan('short'));
 app.use(express.static(path.join(__dirname, 'public')));

@@ -3,6 +3,7 @@ const { signup, signupForm } = require('../controllers/users.controller.js');
 
 
 router.get('/signup/form', signupForm);
+
 router.post('./signup', signup);
 
 

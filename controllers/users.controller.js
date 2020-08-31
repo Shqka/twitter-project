@@ -5,6 +5,7 @@ exports.signupForm = async (req, res, next) => {
     res.render('users/user-form.pug', { errors: null });
 }
 
+
 exports.signup = async (req, res, next) => {
     const body = req.body;
     try {

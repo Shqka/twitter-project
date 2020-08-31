@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-const tweetSchema = schema({
+const tweetSchema = Schema({
     content: {
         type: String,
         maxlength: [140, "Tweet trop long (140 caractères maximum)"],
