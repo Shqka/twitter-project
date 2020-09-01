@@ -10,19 +10,19 @@ block content
         //-
             Utilisation d'un ternaire pour envoyer sur une URL différente notre formulaire dans le cas où notre tweet a un _id 
             (et donc que nous l'éditons) ou qu'il n'en a pas (et donc que nous le créons).
-        form(class="card" method="post" action= tweet._id ? "/tweets/update/" + tweet._id : "/tweets")
+        form(class="card" method="post" action= tweet && tweet._id ? "/tweets/update/" + tweet._id : "/tweets")
 
             div(class="card-header") Écrire un tweet
 
             div(class="card-body")
                 div(class="form-group")
-                    textarea(class="form-control" name="content" placeholder="What is happening")= tweet.content
+                    textarea(class="form-control" name="content" placeholder="What is happening")= tweet && tweet.content? tweet.content: ""
 
                 //- Gestion des erreurs
                 if errors
-                    ul(class="my-2")
+                    div(class="w-100")
                         each error in errors
-                            li(class="text-danger")= error
+                            p(class="text-danger" style="text-align:center;")= error
 
                 //- Bouton d'envoi du formulaire                              
                 div(class="w-100")

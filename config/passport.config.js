@@ -49,11 +49,11 @@ passport.use('local', new LocalStrategy({
                 done(null, user);
             } else {
                 // Sinon les mdp ne correspondent pas on retourne une erreur
-                done(null, false, { message: 'Mauvais mot de passe'});
+                done(null, false, { message: 'Mot de passe incorrect !'});
             }
         } else {
             // Si nous ne trouvons pas de user, on retourne une erreur
-            done(null, false, { message: 'Utilisateur introuvable'});
+            done(null, false, { message: 'Email introuvable !'});
         }
     } catch (error) {
         done(error);
