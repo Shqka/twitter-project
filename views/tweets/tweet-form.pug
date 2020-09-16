@@ -14,7 +14,8 @@ block content
 
             div(class="card-body")
                 div(class="form-group")
-                    textarea(class="form-control" name="content" placeholder="What is happening")= tweet && tweet.content? tweet.content: ""
+                    textarea(class="form-control" name="content" 
+                    placeholder="What is happening" style="height:120px;")= tweet && tweet.content? tweet.content: ""
 
                 //- Gestion des erreurs
                 if errors

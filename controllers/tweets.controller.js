@@ -5,7 +5,7 @@ const e = require('express');
 exports.tweetList = async (req, res, next) => {
     try {
         const tweets = await getCurrentUserTweetsWithFollowing(req.user);
-        res.render('tweets/tweet.pug', { tweets, isAuthenticated: req.isAuthenticated(), currentUser: req.user, user: req.user });
+        res.render('tweets/tweet.pug', { tweets, isAuthenticated: req.isAuthenticated(), currentUser: req.user, user: req.user, editable: true });
 
     } catch (error) {
         next(error);
@@ -36,8 +36,8 @@ exports.tweetDelete = async (req, res, next) => {
     try {
         const tweetId = req.params.tweetId;
         await deleteTweet(tweetId);
-        const tweets = await getTweets();
-        res.render('tweets/tweet-list', { tweets });
+        const tweets = await getCurrentUserTweetsWithFollowing(req.user);
+        res.render('tweets/tweet-list', { tweets, currentUser: req.user, editable: true });
 
     } catch (error) {
         next(error);

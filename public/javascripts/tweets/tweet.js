@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 function bindTweet() {
-    const buttons = document.querySelectorAll('.btn-danger');
+    const buttons = document.querySelectorAll('.fa-trash');
     const tweetContainer = document.querySelector('#tweet-list-container');
     
     buttons.forEach( button => {

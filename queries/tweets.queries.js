@@ -7,12 +7,12 @@ exports.getTweets = () => {
 
 
 exports.getCurrentUserTweetsWithFollowing = (user) => {
-    return Tweet.find({ author: { $in: [ ...user.following, user._id ] }}).exec();
+    return Tweet.find({ author: { $in: [ ...user.following, user._id ] }}).populate('author').exec();
 }
 
 
 exports.getUserTweetsFormAuthorId = (authorId) => {
-    return Tweet.findById({ author: authorId }).exec();
+    return Tweet.findById({ author: authorId }).populate('author').exec();
 }
 
 
