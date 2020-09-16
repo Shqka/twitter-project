@@ -6,6 +6,16 @@ exports.getTweets = () => {
 }
 
 
+exports.getCurrentUserTweetsWithFollowing = (user) => {
+    return Tweet.find({ author: { $in: [ ...user.following, user._id ] }}).exec();
+}
+
+
+exports.getUserTweetsFormAuthorId = (authorId) => {
+    return Tweet.findById({ author: authorId }).exec();
+}
+
+
 exports.createTweet = (tweet) => {
     const newTweet = new Tweet(tweet);
     return newTweet.save();
