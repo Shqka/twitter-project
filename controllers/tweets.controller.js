@@ -1,5 +1,6 @@
 const { getTweets, createTweet, deleteTweet, getTweet, updateTweet, getCurrentUserTweetsWithFollowing } = require ('../queries/tweets.queries.js');
 const e = require('express');
+const Tweet = require('../database/models/tweet.model.js');
 
 
 exports.tweetList = async (req, res, next) => {
@@ -70,4 +71,9 @@ exports.tweetUpdate = async (req, res, next) => {
         const tweet = await getTweet(tweetId);
         res.status(400).render('tweets/tweet-form', { errors, tweet, isAuthenticated: req.isAuthenticated(), currentUser: req.user });
     }
+}
+
+
+exports.getUserTweetsFromAuthorId = (authorId) => {
+    return Tweet.find({ author: authorId }).exec();
 }
