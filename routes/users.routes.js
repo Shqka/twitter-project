@@ -1,7 +1,9 @@
 const router = require('express').Router();
-const { signup, signupForm, uploadImage, userProfile } = require('../controllers/users.controller.js');
+const { signup, signupForm, uploadImage, userProfile, userList } = require('../controllers/users.controller.js');
 const { ensureAuthenticated } = require('../config/guards.config');
 
+
+router.get('/', userList);
 
 router.get('/:username', userProfile);
 

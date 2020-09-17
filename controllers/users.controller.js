@@ -1,4 +1,4 @@
-const { createUser, findUserByUsername } = require('../queries/users.queries.js');
+const { createUser, findUserByUsername, searchUsersPerUsername } = require('../queries/users.queries.js');
 const { getUserTweetsFromAuthorId } = require('../queries/tweets.queries.js');
 const multer = require('multer');
 const path = require('path');
@@ -56,6 +56,17 @@ exports.userProfile = async (req, res, next) => {
             user,
             editable: false
         });
+    } catch (error) {
+        next(error);
+    }
+}
+
+
+exports.userList = async (req, res, next) => {
+    try {
+        const search = req.query.search;
+        const users = await searchUsersPerUsername(search);
+        res.render('includes/search-menu', { users });
     } catch (error) {
         next(error);
     }
