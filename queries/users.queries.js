@@ -39,3 +39,13 @@ exports.searchUsersPerUsername = (search) => {
     const reg = new RegExp(regExp);
     return User.find({ username: { $regex: reg } }).exec();
 }
+
+
+exports.addUserIdToCurrentUserFollowing = (currentUser, userId) => {
+    return User.updateOne({_id: currentUser._id}, { $push: { following: userId } });
+}
+
+
+exports.removeUserIdToCurrentUserFollowing = (currentUser, userId) => {
+    return User.updateOne({_id: currentUser._id}, { $pull: { following: userId } });
+}

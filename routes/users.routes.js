@@ -1,9 +1,13 @@
 const router = require('express').Router();
-const { signup, signupForm, uploadImage, userProfile, userList } = require('../controllers/users.controller.js');
+const { signup, signupForm, uploadImage, userProfile, userList, followUser, unFollowUser } = require('../controllers/users.controller.js');
 const { ensureAuthenticated } = require('../config/guards.config');
 
 
 router.get('/', userList);
+
+router.get('/follow/:userId', followUser);
+
+router.get('/unfollow/:userId', unFollowUser);
 
 router.get('/:username', userProfile);
 
